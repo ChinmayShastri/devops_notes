@@ -35,10 +35,12 @@
 
 ### Container to Container Communication
 - Create a Docker Network
-
-- docker network create my_network
-
+```
+docker network create my_network
+```
 - Run Two Containers on the Same Network
-- docker run -d --name container1 --network my_network ubuntu
-- docker run -d --name container2 --network my_network ubuntu
-- docker exec -it container1 ping container2
+```
+docker run -d --name container1 --network my_network ubuntu
+docker run -d --name container2 --network my_network ubuntu
+docker exec -it container1 ping container2
+```
