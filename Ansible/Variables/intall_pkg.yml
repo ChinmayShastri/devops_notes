@@ -1,0 +1,10 @@
+---
+- name: Install a package
+  hosts: all
+  vars:
+    package_name: vim
+  tasks:
+    - name: Ensure the package is installed
+      apt:
+        name: "{{ package_name }}"
+        state: present

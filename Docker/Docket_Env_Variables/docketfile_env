@@ -1,0 +1,23 @@
+# Using ENV in a Dockerfile
+
+# Define environment variable
+FROM ubuntu
+ENV MY_VAR=my_value
+
+# Use the environment variable in a command
+RUN echo $MY_VAR > /my_var.txt
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the application code
+COPY . .
+
+# Run the application
+CMD ["python", "app.py"]
+
+
+# Run Command:
+
+# docker run -e MY_VAR=new_value my_image
+

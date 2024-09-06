@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+  labels:
+    group: my-lable
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-app-node-1
+    # matchExpressions:
+    #   - {key: app, operator: In, values: [my-app-node-1, example-1]}
+  template:
+    metadata:
+      labels:
+        app: my-app-node-1
+    spec:
+      containers: 
+        - name: my-app-node-12
+          image: chinmay108/chin-nginx

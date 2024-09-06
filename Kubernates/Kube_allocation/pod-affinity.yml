@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - backend
+              topologyKey: "kubernetes.io/hostname"
+      containers:
+        - name: web-container
+          image: nginx
+
+
+
+# Explanation:
+# Affinity Rule: This rule ensures that the web-app pods are scheduled on the same nodes as the pods with the label app: backend.
+# TopologyKey: The topologyKey: "kubernetes.io/hostname" specifies that the pods should be co-located on the same node.
+
+# topologyKey: "kubernetes.io/hostname": This ensures that the pods with the label app: example are scheduled on the same node as other pods with the same label.
+
+
+# This setup is beneficial when your web application needs to be placed on the same nodes as the backend service for performance reasons, such as reduced latency.

@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>Bind mount</title>
+        <style>
+            body {
+                background-image: url('image.jpg');
+            }
+            font{text-align: center;}
+            .pushable {
+                background: hsla(345deg 100% 47%);
+                border-radius: 12px;
+                border: none;
+                padding: 0;
+                cursor: pointer;
+                outline-offset: 4px;
+            }
+            .front {
+               display: block;
+               padding: 12px 42px;
+               border-radius: 12px;
+               font-size: 1.25rem;
+               background: hsl(60, 94%, 48%, 0.957);
+               color: black;
+               transform: translateY(-6px);
+            }
+            
+  .pushable:active .front {
+    transform: translateY(-2px);
+  }
+            </style>
+      </head>
+  <body>
+    <font color="green"><h1>This is the bind mount file</h1></font>
+    <font color="#00FF00" size="6">This is working successfully with docker</font><br>
+    <font style="font-family:fantasy" color="green"><h1>Below command is to directly start the container wihtout docker-compose</h1></font>
+    <button class="pushable">
+        <span class="front">
+            docker container run -d --rm -p 8080:80 --name /container_name/ --mount type=bind,source=/path/to/the/index.html,target=/usr/share/nginx/html/index.html nginx
+        </span>
+      </button>
+    <font color="#00FF00"><h1>This webpage is Designed by Devops Engineer Chinmay Shastri With love to Ruchita.</h1></font>
+    <font color="#00FF00"><h1>This Is The Final Result...!!</h1></font>
+    <font color="green"><h1>Thank you...!!</h1></font>
+  </body>
+</html>

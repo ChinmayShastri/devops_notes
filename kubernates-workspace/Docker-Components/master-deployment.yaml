@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: demoservice2
+spec:
+  selector:
+    app: demoapp2
+  ports:
+    - protocol: 'TCP'
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demoapp2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demoapp2
+      service: backend
+  template:
+    metadata: 
+      labels:
+        app: demoapp2
+        service: backend
+    spec: 
+      containers:
+        - name: demoapp2
+          image: chinmay108/kube-image:5
+        # - name: ...
+        #   image: ...

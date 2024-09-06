@@ -1,0 +1,35 @@
+```
+---
+- name: Example Playbook to Create File with Timestamp
+  hosts: client
+  gather_facts: false
+
+  tasks:
+    - name: Create file with timestamp
+      file:
+        path: "/path/to/destination/file_{{ ansible_date_time.date }}.txt"
+        state: touch
+        mode: '0644'
+        content: "This file was created on {{ ansible_date_time.date }} at {{ ansible_date_time.time }}."
+
+    - name: Display created file
+      debug:
+        msg: "File with timestamp created successfully."
+```
+
+# Explanation
+
+## file:
+The `file` module in Ansible is used to manage files and directories.
+
+## path:
+Specifies the path where the file should be created. Uses `ansible_date_time.date` to include the current date in the filename.
+
+## state:
+`touch` ensures the file is created if it does not exist.
+
+## mode:
+Sets the file permissions to `0644`.
+
+## content:
+Specifies the content of the file, including `ansible_date_time.date` and `ansible_date_time.time` to display the creation timestamp.

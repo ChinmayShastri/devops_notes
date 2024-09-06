@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demoapp2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demoapp2
+      service: backend
+  template:
+    metadata: 
+      labels:
+        app: demoapp2
+        service: backend
+    spec: 
+      containers:
+        - name: demoapp2
+          image: chinmay108/kube-image:4
+        # - name: ...
+        #   image: ...

@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  shivay-nginx:
+    build:
+      context: ./
+      dockerfile: dockerfile
+    image: chin-nginx007
+    ports:
+      - 3000:80
+    volumes:
+      - ./index.html:/usr/share/nginx/html/index.html

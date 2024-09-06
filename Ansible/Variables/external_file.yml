@@ -1,0 +1,11 @@
+---
+- name: Install multiple packages
+  hosts: all
+  vars_files:
+    - vars/pkg.yml
+  tasks:
+    - name: Ensure packages are installed
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ packages_list }}"

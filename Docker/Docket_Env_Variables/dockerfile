@@ -1,0 +1,21 @@
+# Use the official Python image from the Docker Hub
+FROM python:3.9-slim
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the application code
+COPY . .
+
+# Set environment variables from the .env file
+ENV MY_VAR=$MY_VAR
+ENV APP_PORT=$APP_PORT
+ENV DB_HOST=$DB_HOST
+ENV DB_PORT=$DB_PORT
+
+# Run the application
+CMD ["python", "app.py"]
+
+
+# Run the following command to build the Docker image:
+# docker build -t my_image .

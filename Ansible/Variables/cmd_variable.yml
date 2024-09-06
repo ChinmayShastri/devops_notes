@@ -1,0 +1,10 @@
+---
+- name: Create a user with a specific username
+  hosts: all
+  tasks:
+    - name: Add a user
+      user:
+        name: "{{ username }}"
+        state: present
+
+#ansible-playbook create_user.yml -e "username=johndoe"
