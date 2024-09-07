@@ -1,0 +1,15 @@
+---
+- hosts: all
+  tasks:
+    - name: Display OS information
+      debug:
+        msg: "This host is running {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+    - name: Display CPU core count
+      debug:
+        msg: "This host has {{ ansible_processor_cores }} CPU cores."
+
+    - name: Ensure enough memory is available
+      when: ansible_memtotal_mb > 2000
+      debug:
+        msg: "The system has enough memory: {{ ansible_memtotal_mb }} MB"

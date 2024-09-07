@@ -1,0 +1,14 @@
+---
+- hosts: all
+  tasks:
+    - name: Display custom fact - environment
+      debug:
+        msg: "Environment: {{ ansible_local.general.environment }}"
+
+    - name: Display custom fact - region
+      debug:
+        msg: "Region: {{ ansible_local.general.region }}"
+
+    - name: Display custom fact - application version
+      debug:
+        msg: "App Version: {{ ansible_local.general.app_version }}"

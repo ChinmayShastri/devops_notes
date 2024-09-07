@@ -46,7 +46,7 @@ You'll need to enter the password to view the decrypted content.
 
 ### 4. Using Vault in Playbooks
 You can include the encrypted file in your playbooks as follows:
-```
+```yaml
 ---
 - hosts: localhost
   vars_files:
