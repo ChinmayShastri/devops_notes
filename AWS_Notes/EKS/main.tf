@@ -4,6 +4,7 @@ provider "aws" {
 
 module "eks" {
   source          = "./eks"
+  subnet_ids      = var.subnet_ids
   cluster_name    = "example-eks-cluster"
   cluster_version = "1.21"
   node_group_name = "example-eks-nodes"
